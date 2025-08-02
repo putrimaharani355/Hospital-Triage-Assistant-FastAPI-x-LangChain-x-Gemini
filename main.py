@@ -15,8 +15,7 @@ class PatientRequest(BaseModel):
     symptons: list[str]
 
     
-if not os.environ.get("GOOGLE_API_KEY"):
-  os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter API key for Google Gemini: ")
+os.environ["GOOGLE_API_KEY"] = "AIzaSyD8zig0mh7tN2tE30VKQ9LVQzpDyU_gy3E"
 
 model = init_chat_model("gemini-2.0-flash", model_provider="google_genai")
 
