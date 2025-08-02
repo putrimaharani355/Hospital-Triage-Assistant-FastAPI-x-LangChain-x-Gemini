@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+langchain
+google-generativeai
+streamlit
+requests
+pydantic
