@@ -25,7 +25,10 @@ if st.button("Dapatkan Rekomendasi"):
 
         try:
             # Kirim request ke backend FastAPI
-            response = requests.post("http://localhost:8000/rekomendasi-departemen", json=payload)
+            response = requests.post(
+            "https://hospital-triage-api-production.up.railway.app/rekomendasi-departemen",
+            json=payload
+            )
             if response.status_code == 200:
                 result = response.json()
                 st.success(f"✅ Rekomendasi Departemen: **{result['recommended_department']}**")
@@ -33,3 +36,4 @@ if st.button("Dapatkan Rekomendasi"):
                 st.error(f"❌ Error dari server: {response.status_code}\n{response.text}")
         except Exception as e:
             st.error(f"🔌 Gagal terhubung ke server backend: {e}")
+
