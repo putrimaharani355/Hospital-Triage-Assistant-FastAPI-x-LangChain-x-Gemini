@@ -24,25 +24,25 @@ if st.button("Dapatkan Rekomendasi"):
         }
 
         try:
-            # Kirim request ke backend FastAPI
             response = requests.post(
-            "https://hospital-triage-api-production.up.railway.app/rekomendasi-departemen",
-            json=payload
+                "https://hospital-triage-api-production.up.railway.app/rekomendasi-departemen",
+                json=payload
             )
             if response.status_code == 200:
                 result = response.json()
                 st.write("🔍 Raw response dari backend:", result)
-            
-                # Tampilkan sesuai struktur
-                try:
-                    rekomendasi = result[0]["args"]["recommended_department"]
-                    st.success(f"✅ Rekomendasi Departemen: **{rekomendasi}**")
-                except (KeyError, IndexError, TypeError):
+        
+                # Tampilkan hasil jika sesuai
+                if isinstance(result, dict) and "recommended_department" in result:
+                    st.success(f"✅ Rekomendasi Departemen: **{result['recommended_department']}**")
+                else:
                     st.warning("❗ Format data dari backend tidak sesuai harapan.")
             else:
-                    st.warning("Format data dari backend tidak dikenali.")
+                st.warning("⚠️ Gagal mengambil data dari backend.")
         except Exception as e:
-            st.error(f"🔌 Gagal terhubung ke server backend: {e}")
+            st.error(f"❌ Terjadi error: {e}")
+
+
 
 
 
