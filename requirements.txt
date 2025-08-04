@@ -5,3 +5,4 @@ google-generativeai
 streamlit
 requests
 pydantic
+langchain-google-genai
