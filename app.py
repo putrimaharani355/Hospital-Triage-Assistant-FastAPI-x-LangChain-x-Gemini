@@ -37,11 +37,12 @@ if st.button("Dapatkan Rekomendasi"):
                 if isinstance(result, dict) and "recommended_department" in result:
                     st.success(f"✅ Rekomendasi Departemen: **{result[0]['args']['recommended_department']}**")
                 elif isinstance(result, list):
-                    st.success(f"✅ Rekomendasi Departemen: **{result[0]}**")
+                    st.success(f"✅ Rekomendasi Departemen: **{result[0]['args']['recommended_department']}**")
             else:
                     st.warning("Format data dari backend tidak dikenali.")
         except Exception as e:
             st.error(f"🔌 Gagal terhubung ke server backend: {e}")
+
 
 
 
