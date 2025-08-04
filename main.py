@@ -24,7 +24,7 @@ Berikan rekomendasi departemen rumah sakit yang sesuai dengan {symptoms} yang di
 """
 
 prompt=PromptTemplate(
-    input_variables=["gender","age","symptons"],
+    input_variables=["gender","age","symptoms"],
     template=template,
 )
 
@@ -52,6 +52,6 @@ async def rekomendasi_departemen(data: PatientRequest):
     result = chain.invoke({
         "gender": data.gender,
         "age": data.age,
-        "symptons": data.symptons
+        "symptoms": data.symptoms
     })
     return result
