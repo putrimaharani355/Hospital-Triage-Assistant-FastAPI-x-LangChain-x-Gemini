@@ -31,10 +31,17 @@ if st.button("Dapatkan Rekomendasi"):
             )
             if response.status_code == 200:
                 result = response.json()
-                st.success(f"✅ Rekomendasi Departemen: **{result['recommended_department']}**")
+                st.write("🔍 Raw response dari backend:", result)
+            
+                # Tampilkan sesuai struktur
+                if isinstance(result, dict) and "recommended_department" in result:
+                    st.success(f"✅ Rekomendasi Departemen: **{result['recommended_department']}**")
+                elif isinstance(result, list):
+                    st.success(f"✅ Rekomendasi Departemen: **{result[0]}**")
             else:
-                st.error(f"❌ Error dari server: {response.status_code}\n{response.text}")
+                    st.warning("Format data dari backend tidak dikenali.")
         except Exception as e:
             st.error(f"🔌 Gagal terhubung ke server backend: {e}")
+
 
 
