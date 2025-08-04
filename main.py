@@ -12,7 +12,7 @@ app = FastAPI()
 class PatientRequest(BaseModel):
     gender: str
     age: int
-    symptons: list[str]
+    symptoms: list[str]
 
     
 os.environ["GOOGLE_API_KEY"] = "AIzaSyD8zig0mh7tN2tE30VKQ9LVQzpDyU_gy3E"
@@ -20,7 +20,7 @@ os.environ["GOOGLE_API_KEY"] = "AIzaSyD8zig0mh7tN2tE30VKQ9LVQzpDyU_gy3E"
 model = init_chat_model("gemini-2.0-flash", model_provider="google_genai")
 
 template="""
-Berikan rekomendasi departemen rumah sakit yang sesuai dengan {symptons} yang diberikan
+Berikan rekomendasi departemen rumah sakit yang sesuai dengan {symptoms} yang diberikan
 """
 
 prompt=PromptTemplate(
