@@ -37,3 +37,4 @@ if st.button("Dapatkan Rekomendasi"):
         except Exception as e:
             st.error(f"🔌 Gagal terhubung ke server backend: {e}")
 
+
