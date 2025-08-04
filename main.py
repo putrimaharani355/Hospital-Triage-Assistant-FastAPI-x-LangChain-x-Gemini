@@ -55,7 +55,7 @@ async def rekomendasi_departemen(data: PatientRequest):
             "age": data.age,
             "symptoms": data.symptoms
         })
-        return result
+        return result[0]["args"]
     except Exception as e:
         return {"error": str(e)}
 
