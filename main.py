@@ -49,9 +49,13 @@ chain = prompt | structured_llm
 
 @app.post("/rekomendasi-departemen")
 async def rekomendasi_departemen(data: PatientRequest):
-    result = chain.invoke({
-        "gender": data.gender,
-        "age": data.age,
-        "symptoms": data.symptoms
-    })
-    return result
+    try:
+        result = chain.invoke({
+            "gender": data.gender,
+            "age": data.age,
+            "symptoms": data.symptoms
+        })
+        return result
+    except Exception as e:
+        return {"error": str(e)}
+
